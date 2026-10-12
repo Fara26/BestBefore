@@ -1,0 +1,60 @@
+name: Bug Report
+description: File a bug report to help us improve BestBefore.
+title: "[BUG]: "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting a bug! Please fill out the form below to help us fix it quickly.
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity Level
+      description: Select the severity level of this bug.
+      options:
+        - "S1 - Critical (App crash, auth failure, DB connection loss)"
+        - "S2 - High (Core use case blocked, no workaround)"
+        - "S3 - Medium (Feature bug, operational fallback available)"
+        - "S4 - Low (Minor visual or layout issue)"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: Provide a clear description of what happened.
+      placeholder: Describe the bug...
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: What steps are required to recreate the issue?
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. See error
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-actual
+    attributes:
+      label: Expected vs. Actual Behavior
+      description: What did you expect to happen versus what actually happened?
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: Environment / Device Details
+      placeholder: e.g., Chrome on macOS / Mobile Safari
+    validations:
+      required: false
+
