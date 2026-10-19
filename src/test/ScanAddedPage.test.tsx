@@ -11,6 +11,7 @@ function renderAdded(state?: unknown) {
         <Route path="/scan" element={<p>Scan</p>} />
         <Route path="/scan/added" element={<ScanAddedPage />} />
         <Route path="/items" element={<p>Items</p>} />
+        <Route path="/items/new" element={<p>Add Item Form</p>} />
       </Routes>
     </MemoryRouter>,
   )
@@ -37,5 +38,13 @@ describe('ScanAddedPage', () => {
     await userEvent.click(screen.getByRole('button', { name: 'Scan Another' }))
 
     expect(screen.getByText('Scan')).toBeInTheDocument()
+  })
+
+  it('offers Add Another for manually added items', async () => {
+    renderAdded({ product: MOCK_PRODUCT, source: 'manual' })
+
+    await userEvent.click(screen.getByRole('button', { name: 'Add Another' }))
+
+    expect(screen.getByText('Add Item Form')).toBeInTheDocument()
   })
 })

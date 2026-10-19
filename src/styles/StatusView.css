@@ -60,6 +60,10 @@
   background: var(--color-danger-light);
   color: var(--color-danger);
 
+  .status-alert {
+    display: flex;
+  }
+
   svg {
     width: 150px;
     height: 150px;

@@ -2,7 +2,7 @@
  * Icons from Lucide (https://lucide.dev), v0.460.0
  * Source: https://github.com/lucide-icons/lucide/tree/main/icons
  * Icons used: house, scan-barcode, list, chevron-right, leaf, milk, egg, shopping-basket, user,
- *   x, barcode, check, circle-alert
+ *   x, barcode, check, circle-alert, chevron-left, plus
  * License: ISC (https://github.com/lucide-icons/lucide/blob/main/LICENSE)
  * Copyright (c) Lucide Contributors 2022; portions Copyright (c) Cole Bemis 2013-2022 (Feather, MIT).
  */
@@ -159,6 +159,23 @@ export function CircleAlertIcon(props: IconProps) {
       <circle cx="12" cy="12" r="10" />
       <line x1="12" x2="12" y1="8" y2="12" />
       <line x1="12" x2="12.01" y1="16" y2="16" />
+    </Icon>
+  )
+}
+
+export function ChevronLeftIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="m15 18-6-6 6-6" />
+    </Icon>
+  )
+}
+
+export function PlusIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="M5 12h14" />
+      <path d="M12 5v14" />
     </Icon>
   )
 }

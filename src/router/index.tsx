@@ -8,6 +8,9 @@ import ForgotPassword from '../pages/ForgotPassword'
 import ScanPage from '../pages/ScanPage'
 import ScanAddedPage from '../pages/ScanAddedPage'
 import ScanFailedPage from '../pages/ScanFailedPage'
+import ProfilePage from '../pages/ProfilePage'
+import ItemsPage from '../pages/ItemsPage'
+import AddItemPage from '../pages/AddItemPage'
 
 export const router = createBrowserRouter([
   {
@@ -24,6 +27,18 @@ export const router = createBrowserRouter([
       {
         path: '/scan/failed',
         element: <ScanFailedPage />,
+      },
+      {
+        path: '/profile',
+        element: <ProfilePage />,
+      },
+      {
+        path: '/items',
+        element: <ItemsPage />,
+      },
+      {
+        path: '/items/new',
+        element: <AddItemPage />,
       },
     ],
   },

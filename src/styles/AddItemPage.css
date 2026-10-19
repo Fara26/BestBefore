@@ -1,0 +1,21 @@
+.add-item-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.add-item-required-note {
+  font-size: var(--text-caption);
+  color: var(--color-text-muted);
+
+  span {
+    color: var(--color-danger);
+  }
+}
+
+.add-item-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
