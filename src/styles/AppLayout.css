@@ -1,0 +1,11 @@
+.app-layout {
+  width: 100%;
+  max-width: var(--app-max-width);
+  min-height: 100svh;
+  margin: 0 auto;
+}
+
+.app-content {
+  padding: var(--space-6) var(--space-5);
+  padding-bottom: calc(var(--bottom-nav-height) + env(safe-area-inset-bottom) + var(--space-6));
+}

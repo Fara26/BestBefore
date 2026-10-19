@@ -1,130 +1,53 @@
-import { useState } from 'react'
-import heroImg from '../assets/hero.png'
-import reactLogo from '../assets/react.svg'
-import viteLogo from '../assets/vite.svg'
+/*
+ * Animations: Motion (https://motion.dev), v14.3.0
+ * License: MIT (https://github.com/motiondivision/motion/blob/main/LICENSE.md)
+ * Copyright (c) 2024 Motion B.V.
+ */
+import { useNavigate } from 'react-router-dom'
+import { motion } from 'motion/react'
+import Button from '../components/Button'
+import ItemCard from '../components/ItemCard'
+import ProfileButton from '../components/ProfileButton'
+import { BasketIcon, ScanBarcodeIcon } from '../components/icons'
+import { formatDate } from '../lib/dates'
+import { listItem } from '../lib/motion'
+import { mockItems } from '../lib/mockItems'
 import '../styles/HomePage.css'
 
 export default function HomePage() {
-  const [count, setCount] = useState(0)
+  const navigate = useNavigate()
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>BestBefore</h1>
-          <p>
-            Development scaffold is running.
-          </p>
-          <p>
-            Run <code>npm install</code> to install dependencies.
-            <br />
-            Run <code>npm run dev</code> to start the client and API.
-          </p>
-          <p>
-            Client: <code>localhost:5173</code>
-            <br />
-            API: <code>localhost:3000</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
+    <div className="home">
+      <header className="home-header">
+        <h1 className="home-wordmark">BestBefore</h1>
+        <ProfileButton onClick={() => navigate('/profile')} />
+      </header>
+
+      <section className="home-hero">
+        <h2 className="home-greeting">Good Morning!</h2>
+        <BasketIcon className="home-basket" />
       </section>
 
-      <div className="ticks"></div>
+      <Button icon={<ScanBarcodeIcon />} onClick={() => navigate('/scan')}>
+        Scan Barcode
+      </Button>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
+      <section className="home-items">
+        <h2 className="home-section-title">My Items</h2>
+        <ul className="home-item-list">
+          {mockItems.map((item, index) => (
+            <motion.li key={item.id} {...listItem(index)}>
+              <ItemCard
+                name={item.name}
+                expires={formatDate(item.bestBefore)}
+                icon={item.icon}
+                tone={item.tone}
+              />
+            </motion.li>
+          ))}
+        </ul>
       </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+    </div>
   )
 }
