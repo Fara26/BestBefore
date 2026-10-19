@@ -4,6 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { Link, useNavigate } from 'react-router-dom'
 import Logo from '../components/Logo'
+import TextField from '../components/TextField'
 import { mockRegister } from '../lib/mockAuth'
 import '../styles/Auth.css'
 
@@ -45,62 +46,38 @@ export default function Register() {
       <h1 className="auth-title">BestBefore</h1>
 
       <form className="auth-form" onSubmit={handleSubmit(onSubmit)} noValidate>
-        <div className="auth-field">
-          <label htmlFor="email">Email</label>
-          <input
-            id="email"
-            type="email"
-            placeholder="you@example.com"
-            autoComplete="email"
-            disabled={isSubmitting}
-            aria-invalid={errors.email ? 'true' : 'false'}
-            aria-describedby={errors.email ? 'email-error' : undefined}
-            {...register('email')}
-          />
-          {errors.email && (
-            <p id="email-error" className="auth-error">
-              {errors.email.message}
-            </p>
-          )}
-        </div>
+        <TextField
+          id="email"
+          label="Email"
+          type="email"
+          placeholder="you@example.com"
+          autoComplete="email"
+          disabled={isSubmitting}
+          error={errors.email?.message}
+          {...register('email')}
+        />
 
-        <div className="auth-field">
-          <label htmlFor="password">Password</label>
-          <input
-            id="password"
-            type="password"
-            placeholder="At least 8 characters"
-            autoComplete="new-password"
-            disabled={isSubmitting}
-            aria-invalid={errors.password ? 'true' : 'false'}
-            aria-describedby={errors.password ? 'password-error' : undefined}
-            {...register('password')}
-          />
-          {errors.password && (
-            <p id="password-error" className="auth-error">
-              {errors.password.message}
-            </p>
-          )}
-        </div>
+        <TextField
+          id="password"
+          label="Password"
+          type="password"
+          placeholder="At least 8 characters"
+          autoComplete="new-password"
+          disabled={isSubmitting}
+          error={errors.password?.message}
+          {...register('password')}
+        />
 
-        <div className="auth-field">
-          <label htmlFor="confirmPassword">Confirm password</label>
-          <input
-            id="confirmPassword"
-            type="password"
-            placeholder="Re-enter your password"
-            autoComplete="new-password"
-            disabled={isSubmitting}
-            aria-invalid={errors.confirmPassword ? 'true' : 'false'}
-            aria-describedby={errors.confirmPassword ? 'confirmPassword-error' : undefined}
-            {...register('confirmPassword')}
-          />
-          {errors.confirmPassword && (
-            <p id="confirmPassword-error" className="auth-error">
-              {errors.confirmPassword.message}
-            </p>
-          )}
-        </div>
+        <TextField
+          id="confirmPassword"
+          label="Confirm password"
+          type="password"
+          placeholder="Re-enter your password"
+          autoComplete="new-password"
+          disabled={isSubmitting}
+          error={errors.confirmPassword?.message}
+          {...register('confirmPassword')}
+        />
 
         {formError && (
           <p className="auth-error auth-form-error" role="alert">

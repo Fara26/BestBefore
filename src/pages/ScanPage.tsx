@@ -49,7 +49,11 @@ export default function ScanPage() {
         <Button onClick={onScan} disabled={isScanning}>
           {isScanning ? 'Scanning…' : 'Scan'}
         </Button>
-        <Button variant="secondary" disabled={isScanning}>
+        <Button
+          variant="secondary"
+          disabled={isScanning}
+          onClick={() => navigate('/items/new')}
+        >
           Add Item Manually
         </Button>
 

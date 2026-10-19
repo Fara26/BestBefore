@@ -4,6 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { Link } from 'react-router-dom'
 import Logo from '../components/Logo'
+import TextField from '../components/TextField'
 import { mockForgotPassword } from '../lib/mockAuth'
 import '../styles/Auth.css'
 
@@ -43,24 +44,16 @@ export default function ForgotPassword() {
             Enter your email and we'll send you a link to reset your password.
           </p>
 
-          <div className="auth-field">
-            <label htmlFor="email">Email</label>
-            <input
-              id="email"
-              type="email"
-              placeholder="you@example.com"
-              autoComplete="email"
-              disabled={isSubmitting}
-              aria-invalid={errors.email ? 'true' : 'false'}
-              aria-describedby={errors.email ? 'email-error' : undefined}
-              {...register('email')}
-            />
-            {errors.email && (
-              <p id="email-error" className="auth-error">
-                {errors.email.message}
-              </p>
-            )}
-          </div>
+          <TextField
+            id="email"
+            label="Email"
+            type="email"
+            placeholder="you@example.com"
+            autoComplete="email"
+            disabled={isSubmitting}
+            error={errors.email?.message}
+            {...register('email')}
+          />
 
           <button type="submit" className="auth-submit" disabled={isSubmitting}>
             {isSubmitting ? 'Sending…' : 'Send reset link'}

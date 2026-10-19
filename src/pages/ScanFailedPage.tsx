@@ -12,7 +12,9 @@ export default function ScanFailedPage() {
       actions={
         <>
           <Button onClick={() => navigate('/scan')}>Retake Scan</Button>
-          <Button variant="secondary">Add Item Manually</Button>
+          <Button variant="secondary" onClick={() => navigate('/items/new')}>
+            Add Item Manually
+          </Button>
         </>
       }
     />

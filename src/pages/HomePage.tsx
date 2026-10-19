@@ -2,15 +2,10 @@ import { useNavigate } from 'react-router-dom'
 import Button from '../components/Button'
 import ItemCard from '../components/ItemCard'
 import ProfileButton from '../components/ProfileButton'
-import { BasketIcon, EggIcon, LeafIcon, MilkIcon, ScanBarcodeIcon } from '../components/icons'
+import { BasketIcon, ScanBarcodeIcon } from '../components/icons'
+import { formatDate } from '../lib/dates'
+import { mockItems } from '../lib/mockItems'
 import '../styles/HomePage.css'
-
-// Placeholder data until inventory integration.
-const items = [
-  { name: 'Spinach', expires: 'Nov 29, 2026', icon: <LeafIcon />, tone: 'green' as const },
-  { name: 'Milk', expires: 'Nov 28, 2026', icon: <MilkIcon />, tone: 'green' as const },
-  { name: 'Eggs', expires: 'Nov 30, 2026', icon: <EggIcon />, tone: 'amber' as const },
-]
 
 export default function HomePage() {
   const navigate = useNavigate()
@@ -19,7 +14,7 @@ export default function HomePage() {
     <div className="home">
       <header className="home-header">
         <h1 className="home-wordmark">BestBefore</h1>
-        <ProfileButton />
+        <ProfileButton onClick={() => navigate('/profile')} />
       </header>
 
       <section className="home-hero">
@@ -34,9 +29,14 @@ export default function HomePage() {
       <section className="home-items">
         <h2 className="home-section-title">My Items</h2>
         <ul className="home-item-list">
-          {items.map((item) => (
-            <li key={item.name}>
-              <ItemCard {...item} />
+          {mockItems.map((item) => (
+            <li key={item.id}>
+              <ItemCard
+                name={item.name}
+                expires={formatDate(item.bestBefore)}
+                icon={item.icon}
+                tone={item.tone}
+              />
             </li>
           ))}
         </ul>

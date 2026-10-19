@@ -4,6 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { Link, useNavigate } from 'react-router-dom'
 import Logo from '../components/Logo'
+import TextField from '../components/TextField'
 import { mockLogin } from '../lib/mockAuth'
 import '../styles/Auth.css'
 
@@ -39,48 +40,32 @@ export default function Login() {
       <h1 className="auth-title">BestBefore</h1>
 
       <form className="auth-form" onSubmit={handleSubmit(onSubmit)} noValidate>
-        <div className="auth-field">
-          <label htmlFor="email">Email</label>
-          <input
-            id="email"
-            type="email"
-            placeholder="you@example.com"
-            autoComplete="email"
-            disabled={isSubmitting}
-            aria-invalid={errors.email ? 'true' : 'false'}
-            aria-describedby={errors.email ? 'email-error' : undefined}
-            {...register('email')}
-          />
-          {errors.email && (
-            <p id="email-error" className="auth-error">
-              {errors.email.message}
-            </p>
-          )}
-        </div>
+        <TextField
+          id="email"
+          label="Email"
+          type="email"
+          placeholder="you@example.com"
+          autoComplete="email"
+          disabled={isSubmitting}
+          error={errors.email?.message}
+          {...register('email')}
+        />
 
-        <div className="auth-field">
-          <div className="auth-label-row">
-            <label htmlFor="password">Password</label>
+        <TextField
+          id="password"
+          label="Password"
+          type="password"
+          placeholder="Enter your password"
+          autoComplete="current-password"
+          disabled={isSubmitting}
+          error={errors.password?.message}
+          labelAction={
             <Link to="/forgot-password" className="auth-link auth-link-small">
               Forgot password?
             </Link>
-          </div>
-          <input
-            id="password"
-            type="password"
-            placeholder="Enter your password"
-            autoComplete="current-password"
-            disabled={isSubmitting}
-            aria-invalid={errors.password ? 'true' : 'false'}
-            aria-describedby={errors.password ? 'password-error' : undefined}
-            {...register('password')}
-          />
-          {errors.password && (
-            <p id="password-error" className="auth-error">
-              {errors.password.message}
-            </p>
-          )}
-        </div>
+          }
+          {...register('password')}
+        />
 
         {formError && (
           <p className="auth-error auth-form-error" role="alert">

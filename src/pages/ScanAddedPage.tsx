@@ -3,9 +3,16 @@ import Button from '../components/Button'
 import StatusView from '../components/StatusView'
 import type { ScannedProduct } from '../lib/mockScan'
 
+type AddedState = {
+  product?: ScannedProduct
+  source?: 'scan' | 'manual'
+} | null
+
 export default function ScanAddedPage() {
   const navigate = useNavigate()
-  const product = (useLocation().state as { product?: ScannedProduct } | null)?.product
+  const state = useLocation().state as AddedState
+  const product = state?.product
+  const isManual = state?.source === 'manual'
 
   if (!product) {
     return <Navigate to="/scan" replace />
@@ -20,8 +27,11 @@ export default function ScanAddedPage() {
       actions={
         <>
           <Button onClick={() => navigate('/items')}>View My Items</Button>
-          <Button variant="secondary" onClick={() => navigate('/scan')}>
-            Scan Another
+          <Button
+            variant="secondary"
+            onClick={() => navigate(isManual ? '/items/new' : '/scan')}
+          >
+            {isManual ? 'Add Another' : 'Scan Another'}
           </Button>
         </>
       }
