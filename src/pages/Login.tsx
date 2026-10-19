@@ -61,9 +61,9 @@ export default function Login() {
         <div className="auth-field">
           <div className="auth-label-row">
             <label htmlFor="password">Password</label>
-            <a href="#" className="auth-link auth-link-small">
+            <Link to="/forgot-password" className="auth-link auth-link-small">
               Forgot password?
-            </a>
+            </Link>
           </div>
           <input
             id="password"
