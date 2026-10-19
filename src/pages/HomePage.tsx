@@ -1,9 +1,16 @@
+/*
+ * Animations: Motion (https://motion.dev), v14.3.0
+ * License: MIT (https://github.com/motiondivision/motion/blob/main/LICENSE.md)
+ * Copyright (c) 2024 Motion B.V.
+ */
 import { useNavigate } from 'react-router-dom'
+import { motion } from 'motion/react'
 import Button from '../components/Button'
 import ItemCard from '../components/ItemCard'
 import ProfileButton from '../components/ProfileButton'
 import { BasketIcon, ScanBarcodeIcon } from '../components/icons'
 import { formatDate } from '../lib/dates'
+import { listItem } from '../lib/motion'
 import { mockItems } from '../lib/mockItems'
 import '../styles/HomePage.css'
 
@@ -29,15 +36,15 @@ export default function HomePage() {
       <section className="home-items">
         <h2 className="home-section-title">My Items</h2>
         <ul className="home-item-list">
-          {mockItems.map((item) => (
-            <li key={item.id}>
+          {mockItems.map((item, index) => (
+            <motion.li key={item.id} {...listItem(index)}>
               <ItemCard
                 name={item.name}
                 expires={formatDate(item.bestBefore)}
                 icon={item.icon}
                 tone={item.tone}
               />
-            </li>
+            </motion.li>
           ))}
         </ul>
       </section>

@@ -1,11 +1,18 @@
+/*
+ * Animations: Motion (https://motion.dev), v14.3.0
+ * License: MIT (https://github.com/motiondivision/motion/blob/main/LICENSE.md)
+ * Copyright (c) 2024 Motion B.V.
+ */
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { Link, useNavigate } from 'react-router-dom'
+import { motion } from 'motion/react'
 import Logo from '../components/Logo'
 import TextField from '../components/TextField'
 import { mockLogin } from '../lib/mockAuth'
+import { errorReveal } from '../lib/motion'
 import '../styles/Auth.css'
 
 const loginSchema = z.object({
@@ -68,9 +75,9 @@ export default function Login() {
         />
 
         {formError && (
-          <p className="auth-error auth-form-error" role="alert">
+          <motion.p className="auth-error auth-form-error" role="alert" {...errorReveal}>
             {formError}
-          </p>
+          </motion.p>
         )}
 
         <button type="submit" className="auth-submit" disabled={isSubmitting}>

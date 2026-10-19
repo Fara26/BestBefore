@@ -1,6 +1,13 @@
+/*
+ * Animations: Motion (https://motion.dev), v14.3.0
+ * License: MIT (https://github.com/motiondivision/motion/blob/main/LICENSE.md)
+ * Copyright (c) 2024 Motion B.V.
+ */
+import { motion } from 'motion/react'
 import Button from '../components/Button'
 import PageHeader from '../components/PageHeader'
 import { ChevronRightIcon, HouseIcon, UserIcon } from '../components/icons'
+import { spring, tap } from '../lib/motion'
 import '../styles/ProfilePage.css'
 
 // Placeholder user until auth integration.
@@ -23,7 +30,7 @@ export default function ProfilePage() {
         <p className="profile-email">{user.email}</p>
       </section>
 
-      <button type="button" className="profile-row">
+      <motion.button type="button" className="profile-row" whileTap={tap} transition={spring}>
         <span className="profile-row-icon">
           <HouseIcon />
         </span>
@@ -32,7 +39,7 @@ export default function ProfilePage() {
           <span className="profile-row-value">{user.household}</span>
         </span>
         <ChevronRightIcon className="profile-row-chevron" />
-      </button>
+      </motion.button>
 
       <Button variant="secondary">Log out</Button>
     </div>
