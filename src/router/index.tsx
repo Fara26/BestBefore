@@ -5,6 +5,9 @@ import NotFoundPage from '../pages/404'
 import Login from '../pages/Login'
 import Register from '../pages/Register'
 import ForgotPassword from '../pages/ForgotPassword'
+import ScanPage from '../pages/ScanPage'
+import ScanAddedPage from '../pages/ScanAddedPage'
+import ScanFailedPage from '../pages/ScanFailedPage'
 
 export const router = createBrowserRouter([
   {
@@ -14,7 +17,19 @@ export const router = createBrowserRouter([
         path: '/',
         element: <HomePage />,
       },
+      {
+        path: '/scan/added',
+        element: <ScanAddedPage />,
+      },
+      {
+        path: '/scan/failed',
+        element: <ScanFailedPage />,
+      },
     ],
+  },
+  {
+    path: '/scan',
+    element: <ScanPage />,
   },
   {
     path: '/login',

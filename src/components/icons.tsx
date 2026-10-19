@@ -1,7 +1,8 @@
 /*
  * Icons from Lucide (https://lucide.dev), v0.460.0
  * Source: https://github.com/lucide-icons/lucide/tree/main/icons
- * Icons used: house, scan-barcode, list, chevron-right, leaf, milk, egg, shopping-basket, user
+ * Icons used: house, scan-barcode, list, chevron-right, leaf, milk, egg, shopping-basket, user,
+ *   x, barcode, check, circle-alert
  * License: ISC (https://github.com/lucide-icons/lucide/blob/main/LICENSE)
  * Copyright (c) Lucide Contributors 2022; portions Copyright (c) Cole Bemis 2013-2022 (Feather, MIT).
  */
@@ -119,6 +120,45 @@ export function UserIcon(props: IconProps) {
     <Icon {...props}>
       <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
       <circle cx="12" cy="7" r="4" />
+    </Icon>
+  )
+}
+
+export function XIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="M18 6 6 18" />
+      <path d="m6 6 12 12" />
+    </Icon>
+  )
+}
+
+export function BarcodeIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="M3 5v14" />
+      <path d="M8 5v14" />
+      <path d="M12 5v14" />
+      <path d="M17 5v14" />
+      <path d="M21 5v14" />
+    </Icon>
+  )
+}
+
+export function CheckIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="M20 6 9 17l-5-5" />
+    </Icon>
+  )
+}
+
+export function CircleAlertIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <circle cx="12" cy="12" r="10" />
+      <line x1="12" x2="12" y1="8" y2="12" />
+      <line x1="12" x2="12.01" y1="16" y2="16" />
     </Icon>
   )
 }

@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import Button from '../components/Button'
 import ItemCard from '../components/ItemCard'
 import ProfileButton from '../components/ProfileButton'
@@ -12,6 +13,8 @@ const items = [
 ]
 
 export default function HomePage() {
+  const navigate = useNavigate()
+
   return (
     <div className="home">
       <header className="home-header">
@@ -24,7 +27,9 @@ export default function HomePage() {
         <BasketIcon className="home-basket" />
       </section>
 
-      <Button icon={<ScanBarcodeIcon />}>Scan Barcode</Button>
+      <Button icon={<ScanBarcodeIcon />} onClick={() => navigate('/scan')}>
+        Scan Barcode
+      </Button>
 
       <section className="home-items">
         <h2 className="home-section-title">My Items</h2>

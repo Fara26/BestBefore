@@ -1,9 +1,14 @@
 import { render, screen } from '@testing-library/react'
+import { MemoryRouter } from 'react-router-dom'
 import HomePage from '../pages/HomePage'
 
 describe('HomePage', () => {
   it('renders the header, greeting and scan button', () => {
-    render(<HomePage />)
+    render(
+      <MemoryRouter>
+        <HomePage />
+      </MemoryRouter>,
+    )
 
     expect(screen.getByRole('heading', { name: 'BestBefore' })).toBeInTheDocument()
     expect(screen.getByRole('button', { name: 'Profile' })).toBeInTheDocument()
@@ -12,7 +17,11 @@ describe('HomePage', () => {
   })
 
   it('renders the placeholder items as clickable cards', () => {
-    render(<HomePage />)
+    render(
+      <MemoryRouter>
+        <HomePage />
+      </MemoryRouter>,
+    )
 
     expect(screen.getByRole('heading', { name: 'My Items' })).toBeInTheDocument()
     expect(screen.getAllByRole('listitem')).toHaveLength(3)
